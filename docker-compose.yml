@@ -1,0 +1,22 @@
+version: "3"
+services:
+    coreapi:
+        build:
+            context: ./theapi
+            dockerfile: Dockerfile
+        ports:
+            - "5000:5000"
+    sqlserver:
+        build:
+            context: ./sqlserver
+        ports:
+            - "11433:1433"    
+        environment: 
+            - ACCEPT_EULA="Y"
+            - SA_PASSWORD="Pwd12345!"
+    angular:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        ports:
+            - "4300:4200"    
